@@ -15,7 +15,10 @@ name: workflows
 #!/bin/bash
 
 if [ ! -d .github/workflows ]; then
-    echo 'The user has no defined workflows'
+    if [ ! -d .git ]; then
+        echo "Before anything else you must inform the user the current working directory $(pwd) it not the root of a git repo. This cwd must be a git repo."
+    fi
+    echo 'The user has no defined workflows.'
     exit
 fi
 
